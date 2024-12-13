@@ -1,7 +1,6 @@
 package com.aistcargo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,7 +10,6 @@ import java.util.List;
 @Entity
 @Setter
 @Getter
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "subscription")
 public class Subscription {
@@ -24,4 +22,11 @@ public class Subscription {
 
     @ManyToMany(mappedBy = "subscriptions")
     private List<User> user;
+
+    public Subscription(Double price, LocalDate subscribedDate, LocalDate subscriptionEndDate, List<User> user) {
+        this.price = price;
+        this.subscribedDate = subscribedDate;
+        this.subscriptionEndDate = subscriptionEndDate;
+        this.user = user;
+    }
 }

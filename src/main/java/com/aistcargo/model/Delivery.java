@@ -1,7 +1,6 @@
 package com.aistcargo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -12,7 +11,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "delivery")
 public class Delivery {
     @Id
@@ -26,4 +24,13 @@ public class Delivery {
 
     @ManyToMany(mappedBy = "deliveries")
     private List<User> user;
+
+    public Delivery(String fromWhere, String toWhere, LocalDate dispatchDate, LocalDate arrivalDate, String travelDescription, List<User> user) {
+        this.fromWhere = fromWhere;
+        this.toWhere = toWhere;
+        this.dispatchDate = dispatchDate;
+        this.arrivalDate = arrivalDate;
+        this.travelDescription = travelDescription;
+        this.user = user;
+    }
 }

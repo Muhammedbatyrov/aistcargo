@@ -1,7 +1,6 @@
 package com.aistcargo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,6 @@ import java.time.LocalDate;
 @Entity
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "sending")
 public class Sending {
@@ -25,4 +23,12 @@ public class Sending {
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public Sending(String fromWhere, String toWhere, LocalDate dispatchDate, LocalDate arrivalDate, User user) {
+        this.fromWhere = fromWhere;
+        this.toWhere = toWhere;
+        this.dispatchDate = dispatchDate;
+        this.arrivalDate = arrivalDate;
+        this.user = user;
+    }
 }
