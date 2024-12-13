@@ -1,4 +1,4 @@
-package com.aistcargo.model;
+package com.aistcargo.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
