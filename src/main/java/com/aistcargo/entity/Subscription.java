@@ -23,10 +23,14 @@ public class Subscription {
     @ManyToMany(mappedBy = "subscriptions")
     private List<User> user;
 
-    public Subscription(Double price, LocalDate subscribedDate, LocalDate subscriptionEndDate, List<User> user) {
+    @OneToOne(mappedBy = "subscription", cascade = CascadeType.ALL)
+    private Payment payment;
+
+    public Subscription(Double price, LocalDate subscribedDate, LocalDate subscriptionEndDate, List<User> user, Payment payment) {
         this.price = price;
         this.subscribedDate = subscribedDate;
         this.subscriptionEndDate = subscriptionEndDate;
         this.user = user;
+        this.payment = payment;
     }
 }

@@ -32,7 +32,10 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Sending> sendings;
 
-    public User(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber, String email, Boolean hasSubscription, String profileImage, List<Subscription> subscriptions, List<Delivery> deliveries, List<Sending> sendings) {
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Payment> payments;
+
+    public User(String firstName, String lastName, LocalDate dateOfBirth, String phoneNumber, String email, Boolean hasSubscription, String profileImage, List<Subscription> subscriptions, List<Delivery> deliveries, List<Sending> sendings, List<Payment> payments) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dateOfBirth = dateOfBirth;
@@ -43,5 +46,6 @@ public class User {
         this.subscriptions = subscriptions;
         this.deliveries = deliveries;
         this.sendings = sendings;
+        this.payments = payments;
     }
 }
